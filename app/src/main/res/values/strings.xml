@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">brainhealth-meeting</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_booking">Booking</string>
+    <string name="title_upcoming">Upcoming</string>
+    <string name="title_friend">Friends</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="simple_profile_photo_description">simple profile photo</string>
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:name="com.example.brainhealth_meeting.RegisterFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/reg_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registration"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/reg_profile_photo"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_below="@+id/reg_title"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            tools:src="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/reg_select_photo_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reg_title"
+            android:layout_marginTop="32dp"
+            android:layout_toRightOf="@+id/reg_profile_photo"
+            android:text="choose profile photo" />
+
+        <EditText
+            android:id="@+id/reg_edit_text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reg_profile_photo"
+            android:layout_marginTop="16dp"
+            android:hint="your username" />
+
+        <EditText
+            android:id="@+id/reg_edit_text_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reg_edit_text_name"
+            android:hint="your age" />
+
+        <EditText
+            android:id="@+id/reg_edit_text_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reg_edit_text_age"
+            android:hint="your language" />
+
+        <EditText
+            android:id="@+id/reg_edit_text_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reg_edit_text_language"
+            android:hint="your location" />
+
+        <EditText
+            android:id="@+id/reg_edit_text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reg_edit_text_location"
+            android:hint="your bio" />
+
+        <Button
+            android:id="@+id/reg_confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reg_edit_text_message"
+            android:layout_marginBottom="288dp"
+            android:text="confirm" />
+
+    </RelativeLayout>
+</ScrollView>

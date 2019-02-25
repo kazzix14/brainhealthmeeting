@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/bookingFragment">
+
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.brainhealth_meeting.bookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/fragment_booking_list"></fragment>
+
+    <fragment
+        android:id="@+id/upcomingFragment"
+        android:name="com.example.brainhealth_meeting.upcomingFragment"
+        android:label="fragment_upcoming"
+        tools:layout="@layout/fragment_upcoming_list"></fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.brainhealth_meeting.profileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile"></fragment>
+
+    <fragment
+        android:id="@+id/friendFragment"
+        android:name="com.example.brainhealth_meeting.friendFragment"
+        android:label="fragment_friend"
+        tools:layout="@layout/fragment_friend_list"></fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.brainhealth_meeting.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register"></fragment>
+
+    <action
+        android:id="@+id/toProfileFragment"
+        app:destination="@id/profileFragment" />
+
+    <action
+        android:id="@+id/toBookingFragment"
+        app:destination="@id/bookingFragment" />
+
+    <action
+        android:id="@+id/toUpcomingFragment"
+        app:destination="@id/upcomingFragment" />
+
+    <action
+        android:id="@+id/toFriendFragment"
+        app:destination="@id/friendFragment" />
+
+    <action
+        android:id="@+id/toRegisterFragment"
+        app:destination="@id/registerFragment" />
+
+
+</navigation>
