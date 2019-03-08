@@ -1,11 +1,16 @@
 package com.example.brainhealth_meeting;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
 import android.util.Log;
@@ -13,15 +18,20 @@ import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Logger;
+
+import androidx.navigation.Navigation;
 
 
 /**
@@ -39,7 +49,7 @@ public class profileFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
 
-    private int mId;
+    public int mId;
 
     private TextView mName;
     private TextView mAge;
@@ -141,12 +151,55 @@ public class profileFragment extends Fragment {
         toast.show();
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public void onStart() {
+        super.onStart();
+        Button add_button = getActivity().findViewById(R.id.add_to_friend_button);
+        add_button.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              DownloadPhotoAsyncTask task = new DownloadPhotoAsyncTask(new DownloadPhotoAsyncTask.AsyncCallback() {
+                                                  public void preExecute() {
+                                                  }
+
+                                                  public void postExecute(JSONObject result) {
+                                                      Toast toast = Toast.makeText(getActivity(), "done", Toast.LENGTH_SHORT);
+                                                      toast.show();
+                                                  }
+
+                                                  public void progressUpdate(int progress) {
+                                                  }
+
+                                                  public void cancel() {
+                                                  }
+                                              });
+                                              SharedPreferences prefs = getActivity().getSharedPreferences("savedata", Context.MODE_PRIVATE);
+                                              int id = prefs.getInt("my_user_id", -1);
+                                              //SharedPreferences.Editor editor =prefs.edit();
+                                              //editor.clear();
+                                              //editor.commit();
+                                              if (id == -1) {
+                                                  Log.e("app", "user id does not exit");
+                                              }
+
+                                              task.execute("http://brainhealthmeeting.tk:8000/test/friend?id=" + id + "&friend=" + mId, "POST");
+                                          }
+
+                                      }
+
+        );
+
+        Button meeting_button = getActivity().findViewById(R.id.set_up_a_meeting_button);
+        meeting_button.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  mListener.onFragmentInteraction(profileFragment.this);
+                                              }
+                                          }
+
+        );
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -177,6 +230,6 @@ public class profileFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(profileFragment f);
     }
 }
